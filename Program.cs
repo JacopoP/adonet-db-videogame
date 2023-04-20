@@ -50,7 +50,7 @@
                                 try
                                 {
                                     Console.WriteLine("Qual è la software house che l'ha rilascaito?");
-                                    softwareHouse = softwareHouses[Console.ReadLine];
+                                    softwareHouse = softwareHouses[Console.ReadLine()];
                                 }
                                 catch
                                 {
@@ -59,11 +59,33 @@
                             }while (softwareHouse == 0);
                         }
                     break;
-                    case 2: { }
+                    case 2: 
+                        {
+                            int id;
+                            do
+                            {
+                                Console.WriteLine("Qual è l'id del videogioco che vuoi cercare?");
+                            } while (!Int32.TryParse(Console.ReadLine(), out id));
+                        }
                     break;
-                    case 3: { }
+                    case 3: 
+                        {
+                            string? filtro;
+                            do
+                            {
+                                Console.WriteLine("Qual è il nome del videogioco che vuoi cercare?");
+                                filtro = Console.ReadLine();
+                            } while (filtro == null);
+                        }
                     break;
-                    case 4: { }
+                    case 4: 
+                        {
+                            int id;
+                            do
+                            {
+                                Console.WriteLine("Qual è l'id del videogioco che vuoi cancellare?");
+                            } while (!Int32.TryParse(Console.ReadLine(), out id));
+                        }
                     break;
                     default: 
                         {

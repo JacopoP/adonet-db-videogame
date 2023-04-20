@@ -57,7 +57,12 @@
                                     Console.WriteLine("Software house non trovata");
                                 }
                             }while (softwareHouse == 0);
-                            Console.WriteLine(VideogameManager.InserisciVideogame(nome, descrizione, dataUscita, softwareHouse));
+                            try
+                            {
+                                if(VideogameManager.InserisciVideogame(nome, descrizione, dataUscita, softwareHouse) == 1)
+                                    Console.WriteLine("Videogioco salvato con successo!");
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                         }
                     break;
                     case 2: 
@@ -67,7 +72,11 @@
                             {
                                 Console.WriteLine("Qual è l'id del videogioco che vuoi cercare?");
                             } while (!Int32.TryParse(Console.ReadLine(), out id));
-                            VideogameManager.CervaVideogameId(id);
+                            try
+                            { 
+                                Console.WriteLine(VideogameManager.CercaVideogameId(id).ToString());
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message);}
                         }
                     break;
                     case 3: 
@@ -78,6 +87,12 @@
                                 Console.WriteLine("Qual è il nome del videogioco che vuoi cercare?");
                                 filtro = Console.ReadLine();
                             } while (filtro == null);
+                            try
+                            {
+                                foreach (Videogame v in VideogameManager.CercaVideogameNome(filtro))
+                                    Console.WriteLine("\n" + v.ToString());
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                         }
                     break;
                     case 4: 
@@ -87,6 +102,12 @@
                             {
                                 Console.WriteLine("Qual è l'id del videogioco che vuoi cancellare?");
                             } while (!Int32.TryParse(Console.ReadLine(), out id));
+                            try
+                            {
+                                if(VideogameManager.CancellaVideogame(id) == 1)
+                                    Console.WriteLine("Cancellato con successo!");
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                         }
                     break;
                     default: 

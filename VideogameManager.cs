@@ -13,17 +13,17 @@ namespace adonet_db_videogame
         public static int InserisciVideogame(string nome, string descrizione, DateTime uscita, int softwareHouse) 
         {
             int a;
-            string query = "INSERT INTO videogames(name, overview, release_date, software_house_id) VALUES (@nome, @descrizione, @uscita, @softwareHouse)";
-            using (SqlConnection conn = new SqlConnection(stringaConnessione))
-            {
-                using SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = query;
-                cmd.Parameters.Add(new SqlParameter("@nome", nome));
-                cmd.Parameters.Add(new SqlParameter("@descrizione", descrizione));
-                cmd.Parameters.Add(new SqlParameter("@uscita", uscita));
-                cmd.Parameters.Add(new SqlParameter("@softwareHouse", softwareHouse));
-                a = cmd.ExecuteNonQuery();
-            }
+            string query = "INSERT INTO videogames (name, overview, release_date, software_house_id) VALUES (@nome, @descrizione, @uscita, @softwareHouse)";
+            using SqlConnection conn = new SqlConnection(stringaConnessione);
+            
+            using SqlCommand cmd = conn.CreateCommand();
+            conn.Open();
+            cmd.CommandText = query;
+            cmd.Parameters.Add(new SqlParameter("@nome", nome));
+            cmd.Parameters.Add(new SqlParameter("@descrizione", descrizione));
+            cmd.Parameters.Add(new SqlParameter("@uscita", uscita));
+            cmd.Parameters.Add(new SqlParameter("@softwareHouse", softwareHouse));
+            a = cmd.ExecuteNonQuery();            
             return a;
         }
     }

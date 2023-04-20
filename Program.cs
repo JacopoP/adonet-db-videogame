@@ -67,6 +67,7 @@
                             {
                                 Console.WriteLine("Qual è l'id del videogioco che vuoi cercare?");
                             } while (!Int32.TryParse(Console.ReadLine(), out id));
+                            VideogameManager.CervaVideogameId(id);
                         }
                     break;
                     case 3: 

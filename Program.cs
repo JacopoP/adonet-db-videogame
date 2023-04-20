@@ -57,6 +57,7 @@
                                     Console.WriteLine("Software house non trovata");
                                 }
                             }while (softwareHouse == 0);
+                            Console.WriteLine(VideogameManager.InserisciVideogame(nome, descrizione, dataUscita, softwareHouse));
                         }
                     break;
                     case 2: 
